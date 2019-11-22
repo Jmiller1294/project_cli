@@ -3,7 +3,7 @@ class ProjectCli::CLI
   def call 
     puts "Would you like to know the weather?"
     location
-    
+    goodbye
   end
   
   def location
@@ -12,7 +12,7 @@ class ProjectCli::CLI
     
     while input != "exit"
     puts "Enter the location of where you would like to know the weather"
-      input = gets.strip.downcase
+      input = gets.strip
       case input
         when "New York"
           puts "78 degrees"
@@ -23,6 +23,6 @@ class ProjectCli::CLI
   end
   
   def goodbye
-    "See you next time for more weather updates, Goodbye!"
+   puts  "See you next time for more weather updates, Goodbye!"
   end
 end
