@@ -1,4 +1,7 @@
-class ProjectCli::CLI
+require_relative 'forecast'
+require_relative 'weatherApi'
+
+class CLI
   
   def call 
     puts "Would you like to know the weather?"

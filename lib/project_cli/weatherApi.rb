@@ -2,6 +2,9 @@
 
 require 'rubygems'
 require 'httparty'
+require 'pry'
+require_relative 'cli'
+require_relative 'forecast'
 
 class MetaWeatherAPI
   ROOT_URL = 'https://www.metaweather.com/api/location/'
@@ -17,6 +20,16 @@ class MetaWeatherAPI
     # response[0]['woeid'] #=> returns 2379574, from hash "woeid"=>2379574"
     self.get_forecast_for_city(response[0]['woeid'])
   end
+ 
+ 
+  def make_forecast
+    self.get_woeid.each do |forecast|
+      forecast = Forecast.new
+      forecast.date = forecast["consolidated_weather"][0]["applicable_date"]
+  end
+      
+  end
+  
 
   def self.get_forecast_for_city(site_id)
     # sample url: https://www.metaweather.com/api/location/2379574/
@@ -31,4 +44,4 @@ class MetaWeatherAPI
   
 end
 
-puts MetaWeatherAPI.get_forecast_for_city("2487956")
+puts MetaWeatherAPI.get_woeid("New York")
