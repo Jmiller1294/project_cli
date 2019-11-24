@@ -1,5 +1,8 @@
 # beer API docs: https://www.metaweather.com/api/#location
 
+require 'rubygems'
+require 'httparty'
+
 class MetaWeatherAPI
   ROOT_URL = 'https://www.metaweather.com/api/location/'
 
@@ -24,6 +27,8 @@ class MetaWeatherAPI
     # next steps
     # build forecast class
     # make self.create_from_array (response)
-
   end
+  
 end
+
+puts MetaWeatherAPI.get_forecast_for_city("2487956")
