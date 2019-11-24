@@ -1,12 +1,12 @@
+
 # beer API docs: https://www.metaweather.com/api/#location
 
 require 'rubygems'
 require 'httparty'
 require 'pry'
-require_relative 'cli'
-require_relative 'forecast'
 
-class MetaWeatherAPI
+
+class Weather::API
   ROOT_URL = 'https://www.metaweather.com/api/location/'
 
   def self.get_woeid(user_city)
@@ -22,12 +22,13 @@ class MetaWeatherAPI
   end
  
  
-  def make_forecast
-    self.get_woeid.each do |forecast|
+  def self.create_from_array(response)
+    self.response.each do |forecast|
       forecast = Forecast.new
-      forecast.date = forecast["consolidated_weather"][0]["applicable_date"]
+      forecast.date = forecast[0]["applicable_date"]
+     binding.pry
   end
-      
+       
   end
   
 
@@ -41,7 +42,9 @@ class MetaWeatherAPI
     # build forecast class
     # make self.create_from_array (response)
   end
-  
+
 end
 
-puts MetaWeatherAPI.get_woeid("New York")
+
+
+

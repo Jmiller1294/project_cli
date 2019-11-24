@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby 
 
-require "./lib/project_cli"
+require './lib/project_cli'
 
-ProjectCli::CLI.new.call
+
+Weather::CLI.new.call

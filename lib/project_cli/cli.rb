@@ -1,7 +1,6 @@
-require_relative 'forecast'
-require_relative 'weatherApi'
 
-class CLI
+
+class Weather::CLI
   
   def call 
     puts "Would you like to know the weather?"
